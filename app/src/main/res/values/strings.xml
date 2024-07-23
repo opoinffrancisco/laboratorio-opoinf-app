@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">laboratorio-opoinf</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="login">Login</string>
 </resources>

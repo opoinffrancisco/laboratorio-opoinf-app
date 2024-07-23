@@ -13,26 +13,29 @@
         android:theme="@style/Theme.Laboratorioopoinf"
         tools:targetApi="31">
 
-
-        <activity android:name=".DashboardActivity" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Laboratorioopoinf"
-            >
-        <!--
+        <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Laboratorioopoinf">-->
+            android:theme="@style/Theme.Laboratorioopoinf">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <!-- Dashboard Activity -->
+        <activity
+            android:name=".DashboardActivity"
+            android:label="@string/dashboard"
+            android:theme="@style/Theme.Laboratorioopoinf" />
+
+        <!-- Login Activity -->
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/login"
+            android:theme="@style/Theme.Laboratorioopoinf" />
+
+    </application>
 </manifest>

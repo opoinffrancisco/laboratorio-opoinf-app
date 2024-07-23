@@ -17,6 +17,7 @@ import com.opoinf.laboratorio_opoinf.ui.theme.LaboratorioOpoinfTheme
 class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //enableEdgeToEdge()
         setContent {
             LaboratorioOpoinfTheme {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
