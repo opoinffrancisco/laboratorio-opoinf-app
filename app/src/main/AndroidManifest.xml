@@ -37,5 +37,17 @@
             android:label="@string/login"
             android:theme="@style/Theme.Laboratorioopoinf" />
 
+        <!-- RegisterActivity Activity -->
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/registrarse"
+            android:theme="@style/Theme.Laboratorioopoinf" />
+
+        <!-- ForgotPasswordActivity Activity -->
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:label="@string/recuperar_contrasena"
+            android:theme="@style/Theme.Laboratorioopoinf" />
+
     </application>
 </manifest>

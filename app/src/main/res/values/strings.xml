@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">Laboratorio OPOINF</string>
     <string name="dashboard">Principal</string>
+
     <string name="login">Iniciar Sesión</string>
+    <string name="recuperar_contrasena">Recuperar contraseña</string>
+    <string name="registrarse">Registrarse</string>
+
     <string name="correo_electronico">Correo electrónico</string>
     <string name="contrasena">Contraseña</string>
+
     <string name="credenciales_incorrectas">Credenciales incorrectas</string>
 </resources>
