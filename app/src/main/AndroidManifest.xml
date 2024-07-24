@@ -49,5 +49,11 @@
             android:label="@string/recuperar_contrasena"
             android:theme="@style/Theme.Laboratorioopoinf" />
 
+        <!-- ResetPasswordActivity Activity -->
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:label="@string/recuperar_contrasena"
+            android:theme="@style/Theme.Laboratorioopoinf" />
+
     </application>
 </manifest>

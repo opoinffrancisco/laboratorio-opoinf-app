@@ -2,6 +2,7 @@ package com.opoinf.laboratorio_opoinf
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -9,25 +10,26 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.opoinf.laboratorio_opoinf.ui.theme.LaboratorioOpoinfTheme
 
-class RegisterActivity : ComponentActivity() {
+class ResetPasswordActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             LaboratorioOpoinfTheme {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    RegisterScreen(
-                        onRegister = {
-                            // Lógica para registrar el usuario
-                        },
-                        onBackToLogin = {
+                    ResetPasswordScreen(
+                        onResetPassword = { code, newPassword ->
+                            // Lógica para cambiar la contraseña con el servidor
+                            // Simulación de éxito
+                            Toast.makeText(this, "Contraseña cambiada exitosamente", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this, LoginActivity::class.java)
                             startActivity(intent)
-                            finish()  // Para cerrar la actividad de registro y no tenerla en la pila de actividades
+                            finish()
                         }
                     )
                 }
@@ -37,10 +39,11 @@ class RegisterActivity : ComponentActivity() {
 }
 
 @Composable
-fun RegisterScreen(onRegister: () -> Unit, onBackToLogin: () -> Unit) {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+fun ResetPasswordScreen(onResetPassword: (String, String) -> Unit) {
+    var code by remember { mutableStateOf("") }
+    var newPassword by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
@@ -49,30 +52,30 @@ fun RegisterScreen(onRegister: () -> Unit, onBackToLogin: () -> Unit) {
         verticalArrangement = Arrangement.Center
     ) {
         BasicTextField(
-            value = email,
-            onValueChange = { email = it },
+            value = code,
+            onValueChange = { code = it },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 8.dp),
             singleLine = true,
             decorationBox = { innerTextField ->
-                if (email.isEmpty()) {
-                    Text(text = stringResource(R.string.correo_electronico), color = MaterialTheme.colorScheme.onBackground)
+                if (code.isEmpty()) {
+                    Text(text = stringResource(R.string.codigo_de_recuperacion), color = MaterialTheme.colorScheme.onBackground)
                 }
                 innerTextField()
             }
         )
         BasicTextField(
-            value = password,
-            onValueChange = { password = it },
+            value = newPassword,
+            onValueChange = { newPassword = it },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 8.dp),
             singleLine = true,
             visualTransformation = PasswordVisualTransformation(),
             decorationBox = { innerTextField ->
-                if (password.isEmpty()) {
-                    Text(text = stringResource(R.string.contrasena), color = MaterialTheme.colorScheme.onBackground)
+                if (newPassword.isEmpty()) {
+                    Text(text = stringResource(R.string.nueva_contrasena), color = MaterialTheme.colorScheme.onBackground)
                 }
                 innerTextField()
             }
@@ -87,25 +90,25 @@ fun RegisterScreen(onRegister: () -> Unit, onBackToLogin: () -> Unit) {
             visualTransformation = PasswordVisualTransformation(),
             decorationBox = { innerTextField ->
                 if (confirmPassword.isEmpty()) {
-                    Text(text = stringResource(R.string.confirmar_contrasena), color = MaterialTheme.colorScheme.onBackground)
+                    Text(text = context.getString(R.string.confirmar_contrasena), color = MaterialTheme.colorScheme.onBackground)
                 }
                 innerTextField()
             }
         )
         Button(
-            onClick = onRegister,
+            onClick = {
+                if (newPassword == confirmPassword) {
+                    onResetPassword(code, newPassword)
+                } else {
+                    Toast.makeText(context,
+                        context.getString(R.string.las_contrasenas_no_coinciden), Toast.LENGTH_SHORT).show()
+                }
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 8.dp)
         ) {
-            Text(text = "Registrarse")
-        }
-        Spacer(modifier = Modifier.height(16.dp))
-        TextButton(
-            onClick = onBackToLogin,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text(text = stringResource(R.string.volver_al_inicio_de_sesion))
+            Text(text = stringResource(R.string.cambiar_contrasena))
         }
     }
 }

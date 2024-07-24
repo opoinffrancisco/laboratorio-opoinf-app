@@ -1,13 +1,24 @@
 <resources>
+    <!-- Titulos -->
     <string name="app_name">Laboratorio OPOINF</string>
     <string name="dashboard">Principal</string>
 
+    <!-- Botones -->
     <string name="login">Iniciar Sesión</string>
     <string name="recuperar_contrasena">Recuperar contraseña</string>
     <string name="registrarse">Registrarse</string>
+    <string name="volver_al_inicio_de_sesion">Volver al inicio de sesión</string>
+    <string name="cambiar_contrasena">Cambiar contraseña</string>
 
+    <!-- Campos -->
     <string name="correo_electronico">Correo electrónico</string>
     <string name="contrasena">Contraseña</string>
+    <string name="confirmar_contrasena">Confirmar contraseña</string>
+    <string name="nueva_contrasena">Nueva contraseña</string>
+    <string name="codigo_de_recuperacion">Código de recuperación</string>
 
+    <!-- Mensajes -->
     <string name="credenciales_incorrectas">Credenciales incorrectas</string>
+    <string name="codigo_de_recuperacion_enviado">Código de recuperación enviado</string>
+    <string name="las_contrasenas_no_coinciden">Las contraseñas no coinciden</string>
 </resources>
