@@ -55,6 +55,9 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation("androidx.compose.material3:material3:1.1.0")
     implementation("androidx.navigation:navigation-compose:2.5.3")
+    // Seguridad
+    implementation("androidx.security:security-crypto:1.1.0-alpha04")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)

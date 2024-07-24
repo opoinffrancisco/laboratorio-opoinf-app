@@ -1,6 +1,7 @@
 package com.opoinf.laboratorio_opoinf
 
 import android.os.Bundle
+import android.content.Intent
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
@@ -13,18 +14,38 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
+import androidx.lifecycle.viewmodel.compose.viewModel
+
 import com.opoinf.laboratorio_opoinf.modulo.CartScreen
 import com.opoinf.laboratorio_opoinf.modulo.DashboardScreen
 import com.opoinf.laboratorio_opoinf.modulo.ProfileScreen
 import com.opoinf.laboratorio_opoinf.ui.theme.LaboratorioOpoinfTheme
+import com.opoinf.laboratorio_opoinf.controlador.sesion.SessionViewModel
+import com.opoinf.laboratorio_opoinf.controlador.sesion.SessionViewModelFactory
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             LaboratorioOpoinfTheme {
+                val sessionViewModel: SessionViewModel = viewModel(factory = SessionViewModelFactory(this))
+                val isLoggedIn by sessionViewModel.isLoggedIn.collectAsState()
+
+                LaunchedEffect(isLoggedIn) {
+                    if (!isLoggedIn) {
+                        startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                        finish()
+                    }
+                }
+
+
+
                 MainScreen()
             }
         }

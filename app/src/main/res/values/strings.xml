@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">laboratorio-opoinf</string>
-    <string name="dashboard">Dashboard</string>
-    <string name="login">Login</string>
+    <string name="app_name">Laboratorio OPOINF</string>
+    <string name="dashboard">Principal</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="correo_electronico">Correo electrónico</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="credenciales_incorrectas">Credenciales incorrectas</string>
 </resources>

@@ -15,7 +15,7 @@
 
         <!-- Main Activity -->
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Laboratorioopoinf">
@@ -25,9 +25,9 @@
             </intent-filter>
         </activity>
 
-        <!-- Dashboard Activity -->
+        <!-- MainActivity Activity -->
         <activity
-            android:name=".DashboardActivity"
+            android:name=".MainActivity"
             android:label="@string/dashboard"
             android:theme="@style/Theme.Laboratorioopoinf" />
 

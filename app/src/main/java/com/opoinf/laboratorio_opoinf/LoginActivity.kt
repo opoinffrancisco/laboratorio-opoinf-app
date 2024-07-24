@@ -10,6 +10,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.opoinf.laboratorio_opoinf.ui.theme.LaboratorioOpoinfTheme
@@ -23,11 +24,12 @@ class LoginActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     LoginScreen { email, password ->
                         if (email == "user@example.com" && password == "password") {
-                            val intent = Intent(this, DashboardActivity::class.java)
+                            val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
                             finish()
                         } else {
-                            Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this,
+                                getString(R.string.credenciales_incorrectas), Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
@@ -56,7 +58,7 @@ fun LoginScreen(onLogin: (String, String) -> Unit) {
             singleLine = true,
             decorationBox = { innerTextField ->
                 if (email.isEmpty()) {
-                    Text(text = "Correo electrónico", color = MaterialTheme.colorScheme.onBackground)
+                    Text(text = stringResource(R.string.correo_electronico), color = MaterialTheme.colorScheme.onBackground)
                 }
                 innerTextField()
             }
@@ -71,7 +73,7 @@ fun LoginScreen(onLogin: (String, String) -> Unit) {
             visualTransformation = PasswordVisualTransformation(),
             decorationBox = { innerTextField ->
                 if (password.isEmpty()) {
-                    Text(text = "Contraseña", color = MaterialTheme.colorScheme.onBackground)
+                    Text(text = stringResource(R.string.contrasena), color = MaterialTheme.colorScheme.onBackground)
                 }
                 innerTextField()
             }
@@ -82,7 +84,7 @@ fun LoginScreen(onLogin: (String, String) -> Unit) {
                 .fillMaxWidth()
                 .padding(vertical = 8.dp)
         ) {
-            Text(text = "Iniciar sesión")
+            Text(text = stringResource(R.string.login))
         }
     }
 }
